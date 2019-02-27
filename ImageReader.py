@@ -30,6 +30,23 @@ class Image:
     def pixel_map(self):
         return self.image
 
+    def print(self, factor=10):
+        i = 0
+        while i < self.height:
+            j = 0
+            if i % 2 == 0 or i % 3 == 0:
+                pass
+            while j < self.width:
+                if j % 2 == 0 or j % 3 == 0:
+                    pass
+                pixel = self.get(i, j);
+                color = '\x1b[38;2;%d;%d;%dm' % (pixel[0], pixel[1], pixel[2])
+                print(color, 'n', end='')
+                j += 1*factor
+            i += 1*factor
+            print()
+        print('\033[00m')
+
     def __iter__(self):
         self.iX = 0
         self.iY = 0
