@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import colortrans as colorConv
 
 class Image:
     def __init__(self, img: str):

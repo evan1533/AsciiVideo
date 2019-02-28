@@ -2,7 +2,7 @@ from ImageReader import Image
 import sys
 
 #myImage = Image('d35.jpg')
-myImage = Image(sys.argv[1])
+myImage = Image('images/'+str(sys.argv[1]))
 
 colors = myImage.pixel_map()
 if len(sys.argv) > 2:
