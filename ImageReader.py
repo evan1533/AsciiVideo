@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-
+import colortrans as colorConv
 
 class Image:
     def __init__(self, img: str):
@@ -40,11 +40,15 @@ class Image:
                 if j % 2 == 0 or j % 3 == 0:
                     pass
                 pixel = self.get(i, j);
-                color = '\x1b[38;2;%d;%d;%dm' % (pixel[0], pixel[1], pixel[2])
-                print(color, 'n', end='')
+                hexColor = '#%02x%02x%02x' % (pixel[2], pixel[1], pixel[0])
+
+                # xCol = colorConv.rgb2short(hexColor)[0]# '\x1b[38;2;%d;%d;%dm' % (pixel[0], pixel[1], pixel[2])
+                color = "\033[48;2;%d;%d;%dm" % (pixel[2], pixel[1], pixel[0])
+                print(color, ' ', end='')
+                #print(hexColor, '(', pixel[2], pixel[1], pixel[0], ')')
                 j += 1*factor
             i += 1*factor
-            print()
+            print('\033[00m')
         print('\033[00m')
 
     def __iter__(self):
